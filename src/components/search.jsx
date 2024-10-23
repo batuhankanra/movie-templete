@@ -9,7 +9,6 @@ export default function Search() {
   const [search,setSearch]=useState('')
   const {data,filterData}=useSelector(state=>state.movie)
   const dispatch=useDispatch()
-  console.log(filterData)
  
 
   const handleSearch=e=>{

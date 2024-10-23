@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { getMovieApi } from "../store/movie";
+import {_setModal} from '../store/modal.js'
 
 const apiImg=import.meta.env.VITE_API_IMAGE_URL
 
@@ -20,9 +21,6 @@ export default function Movie() {
     const totalPage=Math.ceil(data.length/itemsPer)
     const currentData=data.slice((currentPage-1)*itemsPer,currentPage*itemsPer)
     const per=[]
-   
-
-   
     if(status==='fail'){
         return <div>Fail</div>
     }
@@ -32,13 +30,12 @@ export default function Movie() {
     if(status==='success'){
         for(let i=1;i<=totalPage;i++){
             per.push(i)
-            console.log(per)
         }
         return (
-            <div className="container mx-auto">
+            <div className="container mx-auto ">
                 <div className="flex flex-wrap gap-2" >
                     {data && currentData.map(d=>(
-                        <div key={d.id} className="w-[300px]  h-50 bg-zinc-900 my-4  rounded-md group" >
+                        <button onClick={()=>dispatch(_setModal(d.id))} key={d.id} className="w-[300px]  h-50 bg-zinc-900 my-4  rounded-md group" >
                             <img src={`${apiImg}/${d.poster_path}`} className="rounded-md group-hover:scale-x-110 transition-all duration-300"  />
                             <div className="flex flex-col">
                                 <h1 className="text-lg font-medium group-hover:text-xl  transition-all duration-200">{d.original_title}</h1>
@@ -46,7 +43,7 @@ export default function Movie() {
                                     <p className="flex gap-x-1 items-center">Imd:<FaStar className="text-yellow-300" />{d.vote_average} </p>
                                 
                             </div>
-                        </div>
+                        </button>
                     ))}
                 </div>
                 <ul className="flex items-center justify-center gap-4">
