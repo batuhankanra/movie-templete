@@ -8,6 +8,7 @@ This project focuses on the use of Axios and the search bar implementation. I be
 - Data Fetching with Axios: Movie data is fetched using The Movie Database (TMDb) API.(https://developer.themoviedb.org/reference/intro/getting-started)
 - State Management with Redux: The application state is managed using Redux, making data management easier.
 - Responsive Design: It features a modern and responsive interface created with TailwindCSS.
+- Modal for Detailed View: When users click on a movie, a modal displays detailed information with a blurred background and a smaller poster in focus for a visually  appealing layout.
 
 # Technologies
 - React: Used to build user interface components.
